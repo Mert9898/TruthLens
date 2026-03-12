@@ -17,8 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Create database tables
-models.Base.metadata.create_all(bind=database.engine)
+# Create database tables (safely)
+try:
+    models.Base.metadata.create_all(bind=database.engine)
+except Exception as e:
+    print(f"Database init error (expected on some serverless runs): {e}")
 
 @app.post("/api/analyze", response_model=AnalysisResponse)
 def analyze_content(request: AnalysisRequest, db: Session = Depends(database.get_db)):
