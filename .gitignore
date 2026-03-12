@@ -1,0 +1,16 @@
+# Backend
+backend/truthlens.db
+backend/__pycache__/
+backend/.venv/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.vscode/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
