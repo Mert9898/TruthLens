@@ -11,15 +11,14 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1",
-      "check": true
+      "source": "/(?!api/)(.*)",
+      "destination": "/$1"
     }
   ]
 }
