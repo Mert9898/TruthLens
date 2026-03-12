@@ -11,11 +11,11 @@ function App() {
     fetchHistory();
   }, []);
 
-  const API_URL = import.meta.env.VITE_API_URL || '';
+  const API_URL = import.meta.env.VITE_API_URL || '/api';
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/history`);
+      const response = await fetch(`${API_URL}/history`);
       if (response.ok) {
         const data = await response.json();
         setHistory(data);
@@ -29,7 +29,7 @@ function App() {
     if (!content.trim()) return;
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/analyze`, {
+      const response = await fetch(`${API_URL}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content }),
